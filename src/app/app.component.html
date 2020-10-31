@@ -1,0 +1,54 @@
+<!-- Show all Breeds list -->
+<div class="container-fluid">
+  <span
+    class="badge badge-pill badge-primary mx-1"
+    *ngFor="let breed of allBreeds"
+    (click)="getBreedDetails(breed)"
+    ><a>{{ breed }}</a></span
+  >
+</div>
+
+<!-- get specific breed photo -->
+
+<div *ngIf="!isLoading" class="container">
+  <div class="row">
+    <div class="col-md-4 offset-4">
+      <img [src]="breedList[index]" class="img-fluid" />
+      <div class="row mt-2">
+        <button
+          class="btn btn-primary m-auto"
+          *ngIf="index > 0"
+          (click)="getPrevDog()"
+        >
+          Previous
+        </button>
+        <button
+          class="btn btn-primary m-auto"
+          *ngIf="index < breedList.length - 1"
+          (click)="getNextDog()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- loading placegolder -->
+
+<div *ngIf="isLoading" class="container">
+  <div class="row">
+    <div class="col-md-4 offset-4">
+      <div class="ph-item">
+        <div class="ph-col-12">
+          <div class="ph-picture"></div>
+          <div class="ph-row">
+            <div class="ph-col-6 h-2"></div>
+            <div class="ph-col-4 empty big"></div>
+            <div class="ph-col-2 big"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
